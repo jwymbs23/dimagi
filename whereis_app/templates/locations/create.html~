@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Post{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name"
+      value="Name" required>
+    <label for="city">City</label>
+    <input name="city" id="city" value="City" required>
+
+    <label for="country">Country</label>
+    <input name="country" id="country" value="Country">
+
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Locations{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('locations.add_location') }}">New</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for location in locations %}
+    <article class="post">
+      <header>
+        <div>
+
+	    {{location['person_name'] }}  has been in {{location['location']}} ({{location['lat']}}, {{location['lon']}}) since {{location['created'].strftime('%Y-%m-%d')}}.<br>
+	    (Wrong location? <a href="{{ url_for('locations.update', location_id=location['location_id']) }}">Edit</a>)
+	    
+        </div>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
